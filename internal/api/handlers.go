@@ -2,11 +2,11 @@ package api
 
 import (
     "net/http"
-    "path/filepath"
+ //   "path/filepath"
 
     "github.com/gin-gonic/gin"
-    "zoombot/internal/bot"
-    "zoombot/internal/models"
+    "github.com/OcheOps/zoomBot/internal/bot"
+    "github.com/OcheOps/zoomBot/internal/models"
 )
 
 type Server struct {

@@ -6,8 +6,8 @@ import (
     "log"
     "time"
 
-    "zoombot/internal/models"
-    "zoombot/internal/scraper"
+    "github.com/OcheOps/zoomBot/internal/models"
+    "github.com/OcheOps/zoomBot/internal/scraper"
 )
 
 type Bot struct {

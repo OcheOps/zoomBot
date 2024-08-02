@@ -5,9 +5,9 @@ import (
     "os"
     "path/filepath"
 
-    "zoombot/internal/api"
-    "zoombot/internal/bot"
-    "zoombot/internal/database"
+    "github.com/OcheOps/zoomBot/internal/api"
+    "github.com/OcheOps/zoomBot/internal/bot"
+    "github.com/OcheOps/zoomBot/internal/database"
 )
 
 func main() {
