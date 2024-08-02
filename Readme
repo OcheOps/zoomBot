@@ -1,6 +1,5 @@
-# Project Name
-
-A brief description of your project.
+# Zoom Bot
+This is zoom bot with a UI and APi to be ran locally only 
 
 ## Table of Contents
 
@@ -13,4 +12,4 @@ A brief description of your project.
 
 1. Clone the repository:
    ```shell
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/OcheOps/zoomBot.git
