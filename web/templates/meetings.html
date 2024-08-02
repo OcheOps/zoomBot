@@ -1,0 +1,22 @@
+{{define "content"}}
+<h1>Meetings</h1>
+<form action="/meetings" method="post">
+    <input type="text" name="link" placeholder="Meeting Link" required>
+    <input type="text" name="password" placeholder="Password">
+    <input type="datetime-local" name="start_time" required>
+    <button type="submit">Add Meeting</button>
+</form>
+<ul>
+{{range .meetings}}
+    <li>
+        {{.StartTime.Format "2006-01-02 15:04"}} - {{.Link}} (Status: {{.Status}})
+        {{if eq .Status "scheduled"}}
+        <form action="/join" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="{{.ID}}">
+            <button type="submit">Join</button>
+        </form>
+        {{end}}
+    </li>
+{{end}}
+</ul>
+{{end}}
