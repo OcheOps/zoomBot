@@ -13,7 +13,16 @@
         <a href="/meetings">Meetings</a>
     </nav>
     <main>
-        {{template "content" .}}
+        {{if eq .content "index"}}
+            {{template "index" .}}
+        {{else if eq .content "meetings"}}
+            {{template "meetings" .}}
+        {{else if eq .content "error"}}
+            {{template "error" .}}
+        {{else}}
+            <p>No content available</p>
+        {{end}}
     </main>
     <script src="/static/js/main.js"></script>
-</body
+</body>
+</html>

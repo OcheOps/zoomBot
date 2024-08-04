@@ -1,8 +1,9 @@
+// internal/api/handlers.go
+
 package api
 
 import (
     "net/http"
- //   "path/filepath"
 
     "github.com/gin-gonic/gin"
     "github.com/OcheOps/zoomBot/internal/bot"
@@ -38,21 +39,25 @@ func (s *Server) Run(addr string) error {
 }
 
 func (s *Server) handleIndex(c *gin.Context) {
-    c.HTML(http.StatusOK, "index.html", gin.H{
-        "title": "Zoom Bot",
+    c.HTML(http.StatusOK, "layout.html", gin.H{
+        "title": "Home",
+        "content": "index",
     })
 }
 
 func (s *Server) handleListMeetings(c *gin.Context) {
     meetings, err := s.bot.ListMeetings()
     if err != nil {
-        c.HTML(http.StatusInternalServerError, "error.html", gin.H{
+        c.HTML(http.StatusInternalServerError, "layout.html", gin.H{
+            "title": "Error",
+            "content": "error",
             "error": "Failed to fetch meetings",
         })
         return
     }
-    c.HTML(http.StatusOK, "meetings.html", gin.H{
-        "title":    "Meetings",
+    c.HTML(http.StatusOK, "layout.html", gin.H{
+        "title": "Meetings",
+        "content": "meetings",
         "meetings": meetings,
     })
 }
@@ -60,14 +65,18 @@ func (s *Server) handleListMeetings(c *gin.Context) {
 func (s *Server) handleAddMeeting(c *gin.Context) {
     var meeting models.Meeting
     if err := c.ShouldBind(&meeting); err != nil {
-        c.HTML(http.StatusBadRequest, "error.html", gin.H{
+        c.HTML(http.StatusBadRequest, "layout.html", gin.H{
+            "title": "Error",
+            "content": "error",
             "error": "Invalid meeting data",
         })
         return
     }
 
     if err := s.bot.AddMeeting(&meeting); err != nil {
-        c.HTML(http.StatusInternalServerError, "error.html", gin.H{
+        c.HTML(http.StatusInternalServerError, "layout.html", gin.H{
+            "title": "Error",
+            "content": "error",
             "error": "Failed to add meeting",
         })
         return
